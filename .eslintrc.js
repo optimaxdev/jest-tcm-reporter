@@ -1,0 +1,30 @@
+module.exports = {
+    env: {
+        commonjs: true,
+        es6: true,
+        node: true,
+    },
+    parserOptions: {
+        ecmaVersion: 2018,
+    },
+    plugins: ['prettier'],
+    rules: {
+        'import/default': 'error',
+        'import/first': 'error',
+        'import/named': 'error',
+        'import/newline-after-import': 'error',
+        'import/no-absolute-path': 'error',
+        'import/no-cycle': 'error',
+        'import/no-deprecated': 'warn',
+        'import/no-dynamic-require': 'error',
+        'import/no-duplicates': 'error',
+        'import/no-mutable-exports': 'error',
+        'import/no-namespace': 'error',
+        'import/no-restricted-paths': 'error',
+        'import/no-self-import': 'error',
+        'import/no-unresolved': 'error',
+        'import/no-useless-path-segments': 'error',
+        'prettier/prettier': 'error',
+    },
+    extends: ['airbnb-base', 'prettier', 'prettier/standard'],
+};
