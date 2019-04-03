@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { createTestCycles, createTestCyclesByDescribe } = require('../scripts/');
+const { createTestCycles, createTestCyclesByDescribe } = require('../lib');
 
 (function run() {
     if (process.argv.includes('by-case')) {
