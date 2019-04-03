@@ -1,16 +1,9 @@
 require('@babel/register');
-const os = require('os');
-
 const fs = require('fs-extra');
-
 const { config } = require('../config/config');
-
-const { getTestResults } = require('./getTestResults');
+const { getTestResults, getTestResultsByDescribe } = require('./getTestResults');
 const { agent } = require('./tcmAPI');
-
 const repostFile = fs.readJsonSync(config.reportsFile.JSON);
-
-const testResults = getTestResults(repostFile);
 
 /**
  * Transforms report status to status for TCM.
@@ -64,6 +57,7 @@ const getScriptResults = testResult =>
  */
 const createTestCycles = async () => {
     const resultsList = [];
+    const testResults = getTestResults(repostFile);
 
     for (const [key, value] of Object.entries(testResults)) {
         const status = getStatus(value);
@@ -79,6 +73,35 @@ const createTestCycles = async () => {
     await agent.testRun.create(resultsList);
 };
 
-createTestCycles().catch(err => {
-    console.error(err); // eslint-disable-line no-console
-});
+/**
+ * Create tests by desctribe cycle for JTM.
+ */
+const createTestCyclesByDescribe = async () => {
+    const resultsList = [];
+    const testResults = getTestResultsByDescribe(repostFile);
+
+    for (const [key, value] of Object.entries(testResults)) {
+        const status = getStatus(value);
+        const scriptResults = getScriptResults(value);
+
+        resultsList.push({
+            status,
+            testCaseKey: key,
+            scriptResults,
+        });
+    }
+
+    await agent.testRun.create(resultsList);
+};
+
+if (process.argv.includes('by-case')) {
+    createTestCycles().catch(err => {
+        console.error(err); // eslint-disable-line no-console
+    });
+} else if (process.argv.includes('by-describe')) {
+    createTestCyclesByDescribe().catch(err => {
+        console.error(err); // eslint-disable-line no-console
+    });
+} else {
+    throw Error('Expected parameter');
+}

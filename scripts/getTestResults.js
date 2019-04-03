@@ -84,3 +84,73 @@ export const getTestResults = ({ testResults }) =>
 
         return { ...accumulator };
     }, {});
+
+/**
+ * Formats data test suites.
+ *
+ * @param {Object} dataResult - Test test tes.
+ * @returns {String} Result of the test suite.
+ */
+const getTestName = test => {
+    return test.testResults[0].ancestorTitles[0];
+};
+
+/**
+ * Formats data test suites.
+ *
+ * @namespace
+ * @param {Object} dataResult - Test test tes.
+ * @property {Object} dataResult.testResults - Test suite.
+ * @property {string} dataResult.relativePath - Test path.
+ * @property {Object} dataResult.perfStats - Test date.
+ * @returns {Object} Result of the test suite.
+ */
+const recordTestResultsByDescribe = dataResult => {
+    const { testResults, relativePath, perfStats } = dataResult;
+    const name = getTestName(dataResult);
+
+    return testResults.reduce((accumulator, test) => {
+        const { title, status, duration } = test;
+        const { end } = perfStats;
+        const key = getTestKey(title);
+        const newTestData = {
+            title,
+            status: formatStatus(status),
+            path: relativePath,
+            duration,
+            finishDate: new Date(end),
+            key,
+        };
+
+        if (!key) {
+            reportException(title);
+            return accumulator;
+        }
+
+        return {
+            ...accumulator,
+            ...(Object.prototype.hasOwnProperty.call(accumulator, name)
+                ? { [name]: [...accumulator[name], newTestData] }
+                : { [name]: [newTestData] }),
+        };
+    }, {});
+};
+
+/**
+ * Formats data about test results by describe.
+ *
+ * @param {Object} testResults - Tests reports.
+ * @returns {Object} Formatted test result data.
+ */
+export const getTestResultsByDescribe = ({ testResults }) => {
+    return testResults.reduce((accumulator, testSuites) => {
+        const { testResults, testFilePath, perfStats } = testSuites;
+        const relativePath = getRelativePath(testFilePath);
+        const formatedTestResults = recordTestResultsByDescribe({
+            testResults,
+            relativePath,
+            perfStats,
+        });
+        return { ...accumulator, ...formatedTestResults };
+    }, {});
+};
