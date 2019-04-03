@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { createTestCycles, createTestCyclesByDescribe } = require('../scripts/');
 
 (function run() {
