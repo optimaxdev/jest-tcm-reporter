@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('@babel/register');
 const fs = require('fs-extra');
 const { config } = require('../config/config');
