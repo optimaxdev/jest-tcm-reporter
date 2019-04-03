@@ -71,21 +71,6 @@ const getRelativePath = fullPath =>
     fullPath.substring(fullPath.indexOf('/__analytics__/'), fullPath.length);
 
 /**
- * Formats data about test results.
- *
- * @param {Object} testResults - Tests reports.
- * @returns {Object} Formatted test result data.
- */
-export const getTestResults = ({ testResults }) =>
-    testResults.reduce((accumulator, testSuites) => {
-        const { testResults, testFilePath } = testSuites;
-        const relativePath = getRelativePath(testFilePath);
-        recordTestResults(testResults, relativePath, accumulator);
-
-        return { ...accumulator };
-    }, {});
-
-/**
  * Formats data test suites.
  *
  * @param {Object} dataResult - Test test tes.
@@ -142,7 +127,7 @@ const recordTestResultsByDescribe = dataResult => {
  * @param {Object} testResults - Tests reports.
  * @returns {Object} Formatted test result data.
  */
-export const getTestResultsByDescribe = ({ testResults }) => {
+module.exports.getTestResultsByDescribe = ({ testResults }) => {
     return testResults.reduce((accumulator, testSuites) => {
         const { testResults, testFilePath, perfStats } = testSuites;
         const relativePath = getRelativePath(testFilePath);
@@ -154,3 +139,18 @@ export const getTestResultsByDescribe = ({ testResults }) => {
         return { ...accumulator, ...formatedTestResults };
     }, {});
 };
+
+/**
+ * Formats data about test results.
+ *
+ * @param {Object} testResults - Tests reports.
+ * @returns {Object} Formatted test result data.
+ */
+module.exports.getTestResults = ({ testResults }) =>
+    testResults.reduce((accumulator, testSuites) => {
+        const { testResults, testFilePath } = testSuites;
+        const relativePath = getRelativePath(testFilePath);
+        recordTestResults(testResults, relativePath, accumulator);
+
+        return { ...accumulator };
+    }, {});

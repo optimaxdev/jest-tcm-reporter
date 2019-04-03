@@ -16,4 +16,4 @@ const defaultConfig = {
 
 const personalConfig = getPersonalConfig();
 
-export const config = { ...defaultConfig, ...personalConfig };
+module.exports.config = { ...defaultConfig, ...personalConfig };

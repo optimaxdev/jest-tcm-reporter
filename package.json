@@ -31,6 +31,7 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
+    "@babel/cli": "^6.26.0",
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/preset-env": "^7.4.2",

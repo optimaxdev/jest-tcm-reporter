@@ -56,7 +56,7 @@ const getScriptResults = testResult =>
 /**
  * Create tests cycle for JTM.
  */
-export const createTestCycles = async () => {
+module.exports.createTestCycles = async () => {
     const resultsList = [];
     const testResults = getTestResults(repostFile);
 
@@ -77,7 +77,7 @@ export const createTestCycles = async () => {
 /**
  * Create tests by desctribe cycle for JTM.
  */
-export const createTestCyclesByDescribe = async () => {
+module.exports.createTestCyclesByDescribe = async () => {
     const resultsList = [];
     const testResults = getTestResultsByDescribe(repostFile);
 

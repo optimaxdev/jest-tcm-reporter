@@ -46,6 +46,6 @@ const testRun = {
         requests.post('/testrun', { projectKey: config.tcm.projectKey, name, items }),
 };
 
-export const agent = {
+module.exports.agent = {
     testRun,
 };
