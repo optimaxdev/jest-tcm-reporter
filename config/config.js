@@ -1,4 +1,6 @@
-export const config = {
+import { getPersonalConfig } from '../lib/config-file';
+
+const defaultConfig = {
     tcm: {
         user: {
             username: process.env.TCM_USERNAME,
@@ -11,3 +13,7 @@ export const config = {
         HTML: 'team-city.html',
     },
 };
+
+const personalConfig = getPersonalConfig();
+
+export const config = { ...defaultConfig, ...personalConfig }
