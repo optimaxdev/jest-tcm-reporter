@@ -4,7 +4,7 @@
   "description": "",
   "main": "srcipt/index.js",
   "bin": {
-    "jest-tcm-reporter": "./script/index.js"
+    "jest-tcm-reporter": "./bin/index.js"
   },
   "scripts": {
     "eslint": "eslint ./ --color --ext .js",

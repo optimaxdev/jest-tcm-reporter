@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const { config } = require('../config/config');
 const { getTestResults, getTestResultsByDescribe } = require('./getTestResults');
 const { agent } = require('./tcmAPI');
+
 const repostFile = fs.readJsonSync(config.reportsFile.JSON);
 
 /**
@@ -57,7 +58,7 @@ const getScriptResults = testResult =>
 /**
  * Create tests cycle for JTM.
  */
-const createTestCycles = async () => {
+export const createTestCycles = async () => {
     const resultsList = [];
     const testResults = getTestResults(repostFile);
 
@@ -78,7 +79,7 @@ const createTestCycles = async () => {
 /**
  * Create tests by desctribe cycle for JTM.
  */
-const createTestCyclesByDescribe = async () => {
+export const createTestCyclesByDescribe = async () => {
     const resultsList = [];
     const testResults = getTestResultsByDescribe(repostFile);
 
@@ -95,15 +96,3 @@ const createTestCyclesByDescribe = async () => {
 
     await agent.testRun.create(resultsList);
 };
-
-if (process.argv.includes('by-case')) {
-    createTestCycles().catch(err => {
-        console.error(err); // eslint-disable-line no-console
-    });
-} else if (process.argv.includes('by-describe')) {
-    createTestCyclesByDescribe().catch(err => {
-        console.error(err); // eslint-disable-line no-console
-    });
-} else {
-    throw Error('Expected parameter');
-}

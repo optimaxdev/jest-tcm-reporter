@@ -1,4 +1,4 @@
-import { getPersonalConfig } from '../lib/config-file';
+const { getPersonalConfig } = require('../lib/config-file');
 
 const defaultConfig = {
     tcm: {
@@ -16,4 +16,4 @@ const defaultConfig = {
 
 const personalConfig = getPersonalConfig();
 
-export const config = { ...defaultConfig, ...personalConfig }
+export const config = { ...defaultConfig, ...personalConfig };
