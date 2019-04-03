@@ -1,4 +1,3 @@
-require('@babel/register');
 const fs = require('fs-extra');
 const { config } = require('../config/config');
 const { getTestResults, getTestResultsByDescribe } = require('./getTestResults');
