@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
+const opts = require('optimist').argv;
 const { createTestCycles, createTestCyclesByDescribe } = require('../lib');
 
 (function run() {
-    const opts = require('optimist').argv
     switch (opts.target) {
-        case 'case': 
+        case 'case':
             createTestCycles().catch(err => {
                 console.error(err); // eslint-disable-line no-console
             });
@@ -15,6 +15,7 @@ const { createTestCycles, createTestCyclesByDescribe } = require('../lib');
                 console.error(err); // eslint-disable-line no-console
             });
             break;
-        default: throw Error(`Expected opts`);
+        default:
+            throw Error(`Expected opts`);
     }
 })();
