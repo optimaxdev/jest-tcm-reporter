@@ -45,7 +45,7 @@ export default {
 or add a rule to `package.json`
 
 ```json
-//package.json
+// package.json
 
 {
     "jest-tcm": {
