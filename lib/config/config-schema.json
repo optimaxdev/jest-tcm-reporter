@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "tcm": {
+            "properties": {
+                "user": {
+                    "type": "object",
+                    "properties": {
+                        "username": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "username",
+                        "password"
+                    ]
+                },
+                "projectKey": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "user",
+                "projectKey"
+            ]
+        },
+        "reportsFile": {
+            "properties": {
+                "JSON": {
+                    "type": "string"
+                },
+                "HTML": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "JSON"
+            ]
+        }
+    },
+    "required": [
+        "tcm",
+        "reportsFile"
+    ]
+}
