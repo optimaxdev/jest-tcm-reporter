@@ -38,10 +38,21 @@
             "required": [
                 "JSON"
             ]
+        },
+        "api": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "host"
+            ]
         }
     },
     "required": [
         "tcm",
-        "reportsFile"
+        "reportsFile",
+        "api"
     ]
 }

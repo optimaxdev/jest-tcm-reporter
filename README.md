@@ -26,6 +26,9 @@ module.exports = {
     reportsFile: {
         JSON: './public/reports/team-city.json',
         HTML: './public/reports/team-city.html',
+    },
+    url: {
+        host: 'https://jira.example.com/rest/kanoahtests/1.0'
     }
 }
 ```
@@ -47,6 +50,9 @@ or add a config to `package.json`
         "reportsFile": {
             "JSON": "./public/reports/team-city.json",
             "HTML": "./public/reports/team-city.html"
+        },
+        "url": {
+            "host": "https://jira.example.com/rest/kanoahtests/1.0"
         }
     }
 }
