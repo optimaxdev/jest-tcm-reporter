@@ -1,23 +1,11 @@
 # jest-tcm-reporter
 
-This package sends team-city test reports to the test manager
+This package sends reports to the JTM
 
 ## Installation
 
 ```bash
 $ yarn add --dev optimaxdev/jest-tcm-reporter#master
-```
-
-## Usage
-
-To create tests by cases
-```bash
-$ npx jest-tcm-reporter by-case
-```
-####
-To create tests by describes
-```bash
-$ npx jest-tcm-reporter by-describe
 ```
 
 ## Configuration
@@ -27,7 +15,7 @@ Create config file `jest-tcm.config.js`
 ```js
 // jest-tcm.config.js
 
-export default {
+module.exports = {
     tcm: {
         user: {
             username: 'user',
@@ -42,7 +30,7 @@ export default {
 }
 ```
 
-or add a rule to `package.json`
+or add a config to `package.json`
 
 ```json
 // package.json
@@ -64,10 +52,21 @@ or add a rule to `package.json`
 }
 ```
 
-#### Environment Variables
+#### Options
 
-| Variable      | Default Value     | Description                |
-| :------------ | :---------------- | :------------------------- |
-| TCM_CYCLE_KEY |                   | Name cycle in test manager |
-| TCM_USERNAME  | value from config | Username from jira         |
-| TCM_PASSWORD  | value from config | Password from jira         |
+| Variable  | Default Value | Description                                     |
+| :-------- | :------------ | :---------------------------------------------- |
+| cycleName |               | Name cycle in JTM                      |
+| target    |               | Each `cases` separately or group by `describes` |
+
+## Usage
+
+Each case separately
+```bash
+$ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=case
+```
+####
+Grouped by describe
+```bash
+$ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=describe
+```

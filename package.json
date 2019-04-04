@@ -2,15 +2,15 @@
   "name": "jest-tcm-reporter",
   "version": "0.1.0",
   "description": "",
-  "main": "srcipt/index.js",
+  "main": "./lib/index.js",
   "bin": {
     "jest-tcm-reporter": "./bin/index.js"
   },
   "scripts": {
     "eslint": "eslint ./ --color --ext .js",
     "eslint-fix": "yarn eslint --fix",
-    "tcm-export:case": "TCM_CYCLE_KEY=asdasd node ./bin by-case",
-    "tcm-export:describe": "TCM_CYCLE_KEY=asdasd node ./bin by-describe"
+    "tcm-export:case": "node ./bin --target case --cycleName testcase",
+    "tcm-export:describe": "node ./bin --target describe --cycleName testdecribe"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "ajv": "^6.10.0",
     "fs-extra": "^7.0.1",
     "joycon": "^2.2.4",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "optimist": "^0.6.1"
   }
 }
