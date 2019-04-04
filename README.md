@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/optimaxdev/jest-tcm-reporter.svg?branch=master)](https://travis-ci.org/optimaxdev/jest-tcm-reporter)
 # jest-tcm-reporter
 
 This package sends reports to the JTM
