@@ -10,7 +10,8 @@
     "eslint": "eslint ./ --color --ext .js",
     "eslint-fix": "yarn eslint --fix",
     "tcm-export:case": "node ./bin --target case --cycleName testcase",
-    "tcm-export:describe": "node ./bin --target describe --cycleName testdecribe"
+    "tcm-export:describe": "node ./bin --target describe --cycleName testdecribe",
+    "tcm-export:describe:append": "node ./bin --target describe --cycleName testdecribe --testRunKey ANT-C574"
   },
   "repository": {
     "type": "git",
