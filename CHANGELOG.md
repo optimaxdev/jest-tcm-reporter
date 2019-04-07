@@ -13,5 +13,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `README` file with documentation and usage examples ([#1](https://github.com/optimaxdev/jest-tcm-reporter/pull/1)).
 
 ### Changed
-- Implement bin script ([#1](https://github.com/optimaxdev/jest-tcm-reporter/pull/1)).
+- Implement bin script ([#1](https://github.com/optimaxdev/jest-tcm-reporter/pull/1));
 - File structure ([#1](https://github.com/optimaxdev/jest-tcm-reporter/pull/1)).
