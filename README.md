@@ -22,11 +22,10 @@ module.exports = {
             username: 'user',
             password: 'password',
         },
-        projectKey: 'ANT'
+        projectKey: 'KEY'
     },
     reportsFile: {
-        JSON: './public/reports/team-city.json',
-        HTML: './public/reports/team-city.html',
+        JSON: './public/reports/team-city.json'
     },
     url: {
         host: 'https://jira.example.com/rest/kanoahtests/1.0'
@@ -46,11 +45,10 @@ or add a config to `package.json`
                 "username": "user",
                 "password": "password",
             },
-            "projectKey": "ANT"
+            "projectKey": "KEY"
         },
         "reportsFile": {
-            "JSON": "./public/reports/team-city.json",
-            "HTML": "./public/reports/team-city.html"
+            "JSON": "./public/reports/team-city.json"
         },
         "url": {
             "host": "https://jira.example.com/rest/kanoahtests/1.0"
