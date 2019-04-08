@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/optimaxdev/jest-tcm-reporter.svg?branch=master)](https://travis-ci.org/optimaxdev/jest-tcm-reporter)
 # jest-tcm-reporter
 
-This package sends reports to the Kanoah Tests - Test Management for Jira
+This package sends reports to the [Kanoah Tests](https://www.adaptavist.com/doco/display/KT/Documentation?utm_source=tm4jS&utm_medium=inapp) (Adaptavist) - Test Management for Jira
 
 It works only with reports from `jest` 
 
