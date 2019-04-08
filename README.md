@@ -1,7 +1,9 @@
 [![Build Status](https://travis-ci.org/optimaxdev/jest-tcm-reporter.svg?branch=master)](https://travis-ci.org/optimaxdev/jest-tcm-reporter)
 # jest-tcm-reporter
 
-This package sends reports to the JTM
+This package sends reports to the Kanoah Tests - Test Management for Jira
+
+It works only with reports from `jest` 
 
 ## Installation
 
@@ -59,10 +61,11 @@ or add a config to `package.json`
 
 #### Options
 
-| Variable  | Default Value | Description                                     |
-| :-------- | :------------ | :---------------------------------------------- |
-| cycleName |               | Name cycle in JTM                      |
-| target    |               | Each `cases` separately or group by `describes` |
+| Variable   | Default Value | Description                                                   |
+| :--------- | :------------ | :------------------------------------------------------------ |
+| cycleName  |               | Name cycle in JTM                                             |
+| target     |               | Each `cases` separately or group by `describes`               |
+| testRunKey |               | Сycle key, if specified, results are added to the existing it |
 
 ## Usage
 
@@ -74,4 +77,9 @@ $ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=case
 Grouped by describe
 ```bash
 $ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=describe
+```
+
+Append results are added to the existing cycle.
+```bash
+$ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=describe --testRunKey=ANT_C454
 ```
