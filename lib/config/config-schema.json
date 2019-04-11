@@ -1,0 +1,55 @@
+{
+    "properties": {
+        "tcm": {
+            "properties": {
+                "user": {
+                    "type": "object",
+                    "properties": {
+                        "username": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "username",
+                        "password"
+                    ]
+                },
+                "projectKey": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "user",
+                "projectKey"
+            ]
+        },
+        "reportsFile": {
+            "properties": {
+                "JSON": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "JSON"
+            ]
+        },
+        "api": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "host"
+            ]
+        }
+    },
+    "required": [
+        "tcm",
+        "reportsFile",
+        "api"
+    ]
+}
