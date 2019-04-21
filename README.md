@@ -29,9 +29,14 @@ module.exports = {
     reportsFile: {
         JSON: './public/reports/team-city.json'
     },
-    url: {
+    api: {
         host: 'https://jira.example.com/rest/kanoahtests/1.0'
-    }
+    },
+    whitelist: {
+        enabled: true,
+        checkVersion: true,
+        query: 'projectKey = "KEY" AND status = "Approved"',
+    },
 }
 ```
 
@@ -52,8 +57,13 @@ or add a config to `package.json`
         "reportsFile": {
             "JSON": "./public/reports/team-city.json"
         },
-        "url": {
+        "api": {
             "host": "https://jira.example.com/rest/kanoahtests/1.0"
+        },
+        "whitelist": {
+            "enabled": true,
+            "checkVersion": true,
+            "query": "projectKey = \"KEY\" AND status = \"Approved\""
         }
     }
 }
@@ -61,11 +71,24 @@ or add a config to `package.json`
 
 #### Options
 
-| Variable   | Default Value | Description                                                   |
-| :--------- | :------------ | :------------------------------------------------------------ |
-| cycleName  |               | Name cycle in JTM                                             |
-| target     |               | Each `cases` separately or group by `describes`               |
-| testRunKey |               | Сycle key, if specified, results are added to the existing it |
+| Variable    | Default Value | Description                                                   |
+| :---------- | :------------ | :------------------------------------------------------------ |
+| cycleName   |               | Name cycle in JTM                                             |
+| target      |               | Each `cases` separately or group by `describes`               |
+| testRunKey  |               | Сycle key, if specified, results are added to the existing it |
+| updateCases |               | If specified, test cases' steps will be updated.              |
+
+## Whitelist feature
+
+Whitelist feature now only works for `describe` strategy.
+
+Pattern for naming is: [KEY (VERSION)]
+
+### Whitelist configuration
+
+- `enabled` - If true, only test cases in whitelist will be marked.
+- `query` - Query to form whitelist ([See /testrun/search in api doc](https://docs.adaptavist.io/tm4j/server/api/v1/)).
+- `checkVersion` - If true, only cases with the same version will be marked (compare with latest version of case).
 
 ## Usage
 
@@ -78,7 +101,12 @@ Grouped by describe
 ```bash
 $ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=describe
 ```
-
+###
+With updating cases
+```bash
+$ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=case --updateCases
+```
+###
 Append results are added to the existing cycle.
 ```bash
 $ npx jest-tcm-reporter --cycleName=ANT_QA-34_Mobile --target=describe --testRunKey=ANT_C454
