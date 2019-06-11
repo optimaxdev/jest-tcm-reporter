@@ -45,6 +45,19 @@
             "required": [
                 "host"
             ]
+        },
+        "whitelist": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "checkVersion": {
+                    "type": "boolean"
+                },
+                "query": {
+                    "type": "string"
+                }
+            }
         }
     },
     "required": [
