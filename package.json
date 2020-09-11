@@ -35,7 +35,7 @@
     "ajv": "^6.10.0",
     "fs-extra": "^7.0.1",
     "joycon": "^2.2.4",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "optimist": "^0.6.1",
     "with-query": "^1.1.2"
   }
